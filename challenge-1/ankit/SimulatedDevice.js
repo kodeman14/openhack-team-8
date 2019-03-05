@@ -7,18 +7,17 @@ const UUIDv4 = require('uuid/v4');
 var connectionString = 'HostName=OpenHack-team-8.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey=SY5DVwxpNgPEmQft329J1RScpDz+hUYBVjQ2rEZERj4=';
 var client = DeviceClient.fromConnectionString(connectionString, Mqtt);
 
-let date = new Date();
-
-let hour = date.getHours();
-hour = (hour < 10 ? "0" : "") + hour;
-
-let min = date.getMinutes();
-min = (min < 10 ? "0" : "") + min;
-
-let sec = date.getSeconds();
-sec = (sec < 10 ? "0" : "") + sec;
-
 setInterval(function(){
+  let date = new Date();
+
+  let hour = date.getHours();
+  hour = (hour < 10 ? "0" : "") + hour;
+
+  let min = date.getMinutes();
+  min = (min < 10 ? "0" : "") + min;
+
+  let sec = date.getSeconds();
+  sec = (sec < 10 ? "0" : "") + sec;
   var currentTime = hour + ":" + min + ":" + sec;
   var message = new Message(JSON.stringify({
     ticketId: UUIDv4(),
